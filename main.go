@@ -108,11 +108,11 @@ func main() {
 		},
 	})
 
-	r.HandleFunc("/movies", getMovies)
-	r.HandleFunc("/movies/id", getMovie)
-	r.HandleFunc("/movies", createMovies)
-	r.HandleFunc("/movies/id", updateMovies)
-	r.HandleFunc("/movies/id", deleteMovies)
+	r.HandleFunc("/movies", getMovies).Methods("GET")
+	r.HandleFunc("/movies/{id}", getMovie).Methods("GET")
+	r.HandleFunc("/movies", createMovies).Methods("POST")
+	r.HandleFunc("/movies/{id}", updateMovies).Methods("PUT")
+	r.HandleFunc("/movies/{id}", deleteMovies).Methods("DELETE")
 
 	fmt.Printf("Starting server on port %v\n", port)
 
